@@ -13,6 +13,7 @@ export default function VideoPlayer({ videoFile, platform, showOverlay, showSafe
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [showPlayButton, setShowPlayButton] = useState(true)
+  const [isHovering, setIsHovering] = useState(false)
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -45,7 +46,12 @@ export default function VideoPlayer({ videoFile, platform, showOverlay, showSafe
 
   return (
     <div className="flex justify-center">
-      <div className="relative bg-black rounded-lg overflow-hidden" style={{ width: '405px', height: '720px' }}>
+      <div 
+        className="relative bg-black rounded-lg overflow-hidden" 
+        style={{ width: '405px', height: '720px' }}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
         <video
           ref={videoRef}
           src={videoFile.url}
@@ -58,12 +64,14 @@ export default function VideoPlayer({ videoFile, platform, showOverlay, showSafe
           <SNSOverlay platform={platform} showSafeZone={showSafeZone} />
         )}
         
-        {/* 中央の再生ボタン */}
-        {showPlayButton && (
+        {/* 中央の再生/一時停止ボタン */}
+        {(showPlayButton || (isPlaying && isHovering)) && (
           <div className="absolute inset-0 flex items-center justify-center">
             <button
               onClick={togglePlay}
-              className="bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full p-4 transition-all transform hover:scale-110"
+              className={`bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full p-4 transition-all transform hover:scale-110 ${
+                isPlaying && isHovering ? 'opacity-90' : 'opacity-100'
+              }`}
             >
               {isPlaying ? (
                 <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
