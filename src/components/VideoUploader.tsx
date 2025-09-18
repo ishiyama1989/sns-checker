@@ -37,7 +37,8 @@ export default function VideoUploader({ onVideoUpload }: VideoUploaderProps) {
 
   return (
     <div className="flex flex-col items-center justify-center w-full">
-      <div
+      <label
+        htmlFor="video-upload"
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         className="flex flex-col items-center justify-center w-full h-48 sm:h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors"
@@ -74,11 +75,7 @@ export default function VideoUploader({ onVideoUpload }: VideoUploaderProps) {
           className="hidden"
           id="video-upload"
         />
-        <label
-          htmlFor="video-upload"
-          className="absolute inset-0 cursor-pointer"
-        />
-      </div>
+      </label>
     </div>
   )
 }
