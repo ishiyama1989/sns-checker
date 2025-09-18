@@ -12,13 +12,13 @@ export default function Home() {
   const [showSafeZone, setShowSafeZone] = useState(false)
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
+    <div className="max-w-4xl mx-auto px-4 py-4 sm:p-6">
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 sm:mb-8 text-gray-800 leading-tight">
         SNS動画セーフティーゾーンチェッカー
       </h1>
-      
-      <div className="mb-6">
-        <PlatformSelector 
+
+      <div className="mb-4 sm:mb-6">
+        <PlatformSelector
           platforms={SNS_PLATFORMS}
           selectedPlatform={selectedPlatform}
           onPlatformChange={setSelectedPlatform}
@@ -28,20 +28,20 @@ export default function Home() {
       {!videoFile ? (
         <VideoUploader onVideoUpload={setVideoFile} />
       ) : (
-        <div className="space-y-4">
-          <div className="flex justify-between items-center">
+        <div className="space-y-3 sm:space-y-4">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
             <button
               onClick={() => setVideoFile(null)}
-              className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors"
+              className="px-3 py-2 sm:px-4 sm:py-2 bg-gray-500 text-white rounded text-sm sm:text-base hover:bg-gray-600 transition-colors order-last sm:order-first"
             >
               別の動画を選択
             </button>
-            <div className="flex space-x-3">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
               <button
                 onClick={() => setShowOverlay(!showOverlay)}
-                className={`px-4 py-2 rounded transition-colors ${
-                  showOverlay 
-                    ? 'bg-red-500 text-white hover:bg-red-600' 
+                className={`px-3 py-2 sm:px-4 sm:py-2 rounded text-xs sm:text-sm transition-colors ${
+                  showOverlay
+                    ? 'bg-red-500 text-white hover:bg-red-600'
                     : 'bg-green-500 text-white hover:bg-green-600'
                 }`}
               >
@@ -49,9 +49,9 @@ export default function Home() {
               </button>
               <button
                 onClick={() => setShowSafeZone(!showSafeZone)}
-                className={`px-4 py-2 rounded transition-colors ${
-                  showSafeZone 
-                    ? 'bg-orange-500 text-white hover:bg-orange-600' 
+                className={`px-3 py-2 sm:px-4 sm:py-2 rounded text-xs sm:text-sm transition-colors ${
+                  showSafeZone
+                    ? 'bg-orange-500 text-white hover:bg-orange-600'
                     : 'bg-blue-500 text-white hover:bg-blue-600'
                 }`}
               >

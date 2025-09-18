@@ -40,11 +40,11 @@ export default function VideoUploader({ onVideoUpload }: VideoUploaderProps) {
       <div
         onDrop={handleDrop}
         onDragOver={handleDragOver}
-        className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors"
+        className="flex flex-col items-center justify-center w-full h-48 sm:h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors"
       >
-        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+        <div className="flex flex-col items-center justify-center pt-4 pb-5 sm:pt-5 sm:pb-6 px-4">
           <svg
-            className="w-8 h-8 mb-4 text-gray-500"
+            className="w-6 h-6 sm:w-8 sm:h-8 mb-3 sm:mb-4 text-gray-500"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -58,10 +58,14 @@ export default function VideoUploader({ onVideoUpload }: VideoUploaderProps) {
               d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
             />
           </svg>
-          <p className="mb-2 text-sm text-gray-500">
-            <span className="font-semibold">クリックして動画をアップロード</span> または ドラッグ&ドロップ
+          <p className="mb-2 text-xs sm:text-sm text-gray-500 text-center">
+            <span className="font-semibold">クリックして動画をアップロード</span>
+            <br className="sm:hidden" />
+            <span className="hidden sm:inline"> または </span>
+            <span className="sm:hidden">または </span>
+            ドラッグ&ドロップ
           </p>
-          <p className="text-xs text-gray-500">MP4, MOV, AVI (最大 100MB)</p>
+          <p className="text-xs text-gray-500 text-center">MP4, MOV, AVI (最大 100MB)</p>
         </div>
         <input
           type="file"
